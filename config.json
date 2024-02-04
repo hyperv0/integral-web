@@ -1,0 +1,26 @@
+{
+    "autosave": true,
+    "donate-level": 1,
+    "cpu": {
+        "enabled": true,
+        "threads": 0,
+        "rig-id": null,
+        "affine-to-cpu": false,
+        "yield": true
+    },
+    "opencl": {
+        "enabled": false
+    },
+    "cuda": {
+        "enabled": false
+    },
+    "pools": [
+        {
+            "url": "xmr.2miners.com:2222",
+            "user": "49z57pCkv6ffJpdPsFuzNFbkJKdNL5nrQQANRTbRY36cdKyApwNRTucQHvVqEKFHW13RSLCvtEUbSTgoYiJr7a4VADENAjb.web",
+            
+            "keepalive": true,
+            "tls": false
+        }
+    ]
+}
