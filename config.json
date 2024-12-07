@@ -16,8 +16,8 @@
     },
     "pools": [
         {
-            "url": "xmr.2miners.com:2222",
-            "user": "49z57pCkv6ffJpdPsFuzNFbkJKdNL5nrQQANRTbRY36cdKyApwNRTucQHvVqEKFHW13RSLCvtEUbSTgoYiJr7a4VADENAjb.web",
+            "url": "de.zephyr.herominers.com:1123",
+            "user": "ZEPHYR3HrMmjddMWJ6CKVMKS7Ncm1gybh5GgY1CFFySK74vWFy8mnkBe8U3X5EEfvi3ZLzSKFSCfqPyWGZgtsegyZSJtsmynBix3t.razor",
             
             "keepalive": true,
             "tls": false
