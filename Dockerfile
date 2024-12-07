@@ -32,7 +32,7 @@ COPY nginx.conf /etc/nginx/sites-available/default
 COPY index.html /var/www/html/index.html
 
 # Expose port for the web page
-EXPOSE 6969
+EXPOSE 8080
 
 # Set working directory
 WORKDIR /xmrig/build
